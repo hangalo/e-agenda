@@ -52,7 +52,7 @@ public class ContactoBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
-    public List<Contacto> listaContactos() {
+    public List<Contacto> getListaContactos() {
         return contactos = contactoDAO.findAll();
     }
 

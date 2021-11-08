@@ -15,7 +15,7 @@ public class ContactoDAO implements GenericoDAO<Contacto> {
     private static final String INSERIR = "INSERT INTO contacto(nome,sobrenome, casa, bairro, distrito, data_nascimento, url_foto,foto)VALUES(?,?,?,?,?,?,?,?)";
     private static final String UPDATE = "UPDATE contacto SET nome = ? , sobrenome =?, casa= ?, bairro = ?, distrito = ?, data_nascimento=?, url_foto = ?, foto = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM contacto WHERE id=?;";
-    private static final String SELECT_ALL = "SELECT id,nome,sobrenome,casa,bairro,distrito,data_nascimento,url_foto, foto FROM contacto";
+    private static final String SELECT_ALL = "SELECT * FROM contacto";
     private static final String SELECT_BY_ID = "SELECT id,nome,sobrenome,casa,bairro,distrito,data_nascimento,url_foto, foto FROM contacto WHERE id = ?";
 
     @Override
@@ -179,6 +179,8 @@ public class ContactoDAO implements GenericoDAO<Contacto> {
             contacto.setBairro(rs.getString("bairro"));
             contacto.setDistrito(rs.getString("distrito"));
             contacto.setDataNascimento(rs.getDate("data_nascimento"));
+            contacto.setUrlFoto(rs.getString("url_foto"));
+            contacto.setFoto(rs.getBytes("foto"));
         } catch (SQLException e) {
         }
     }

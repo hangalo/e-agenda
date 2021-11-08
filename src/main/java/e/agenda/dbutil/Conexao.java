@@ -26,8 +26,8 @@ public class Conexao {
         String PASSWORD = "root";
         Connection conn;
         try {
-            Class.forName(DRIVERMYSQL8);
-            conn = DriverManager.getConnection(DRIVERMYSQL8, USER, PASSWORD);
+            Class.forName(DRIVERMYSQL5_6);
+            conn = DriverManager.getConnection(URLMYSQL5_6, USER, PASSWORD);
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println("Erro na conexao com a base de dados: " + ex.getMessage());
             return null;
