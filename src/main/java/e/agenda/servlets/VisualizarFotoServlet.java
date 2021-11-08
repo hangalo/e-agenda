@@ -30,7 +30,7 @@ public class VisualizarFotoServlet extends HttpServlet {
 
             //Obtem o parametro ficheiro do cliente
             String ficheiro = request.getParameter("file");
-             System.out.println("Nome do Ficheiro"+ficheiro);
+             System.out.println("Nome do Ficheiro\t"+ficheiro);
             if (ficheiro == null) {
                 ficheiro = FicheiroUtil.getPathPastaAplicacaoServlet(request) + "padrao.png";
             }

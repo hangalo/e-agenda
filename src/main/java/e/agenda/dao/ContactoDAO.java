@@ -1,8 +1,8 @@
-
 package e.agenda.dao;
 
 import e.agenda.dbutil.Conexao;
 import e.agenda.modelo.Contacto;
+import e.agenda.modelo.Municipio;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,11 +12,11 @@ import java.util.List;
 
 public class ContactoDAO implements GenericoDAO<Contacto> {
 
-    private static final String INSERIR = "INSERT INTO contacto(nome,sobrenome, casa, bairro, distrito, data_nascimento, url_foto,foto)VALUES(?,?,?,?,?,?,?,?)";
-    private static final String UPDATE = "UPDATE contacto SET nome = ? , sobrenome =?, casa= ?, bairro = ?, distrito = ?, data_nascimento=?, url_foto = ?, foto = ? WHERE id = ?";
+    private static final String INSERIR = "INSERT INTO contacto(nome,sobrenome, casa, bairro, distrito, data_nascimento, url_foto, foto, id_municipio)VALUES(?,?,?,?,?,?,?,?,?)";
+    private static final String UPDATE = "UPDATE contacto SET nome = ? , sobrenome =?, casa= ?, bairro = ?, distrito = ?, data_nascimento=?, url_foto = ?, foto = ?, id_municipio =?  WHERE id = ?";
     private static final String DELETE = "DELETE FROM contacto WHERE id=?;";
-    private static final String SELECT_ALL = "SELECT * FROM contacto";
-    private static final String SELECT_BY_ID = "SELECT id,nome,sobrenome,casa,bairro,distrito,data_nascimento,url_foto, foto FROM contacto WHERE id = ?";
+    private static final String SELECT_ALL = "SELECT c.id,c.nome,c.sobrenome,c.casa,c.bairro,c.distrito,c.data_nascimento,c.url_foto, c.foto, m.nome_municipio FROM contacto c INNER JOIN municipio m ON m.id_municipio = c.id_municipio";
+    private static final String SELECT_BY_ID = "SELECT c.id,c.nome,c.sobrenome,c.casa,c.bairro,c.distrito,c.data_nascimento,c.url_foto, c.foto, m.nome_municipio FROM contacto c INNER JOIN municipio m ON m.id_municipio = c.id_municipio WHERE id = ?";
 
     @Override
     public void save(Contacto contacto) {
@@ -38,6 +38,7 @@ public class ContactoDAO implements GenericoDAO<Contacto> {
             ps.setDate(7, new java.sql.Date(contacto.getDataNascimento().getTime()));
             ps.setString(8, contacto.getUrlFoto());
             ps.setBytes(9, contacto.getFoto());
+            ps.setInt(10, contacto.getMunicipio().getIdMunicipio());
             int retorno = ps.executeUpdate();
             if (retorno > 0) {
                 System.out.println("Dados inseridos com Sucesso: " + ps.getUpdateCount());
@@ -74,7 +75,8 @@ public class ContactoDAO implements GenericoDAO<Contacto> {
             ps.setDate(7, new java.sql.Date(contacto.getDataNascimento().getTime()));
             ps.setString(8, contacto.getUrlFoto());
             ps.setBytes(9, contacto.getFoto());
-            ps.setInt(10, contacto.getId());
+            ps.setInt(10, contacto.getMunicipio().getIdMunicipio());
+            ps.setInt(11, contacto.getId());
             int retorno = ps.executeUpdate();
             if (retorno > 0) {
                 System.out.println("Dados actualizados com Sucesso:ContactoDAO:update " + ps.getUpdateCount());
@@ -146,7 +148,7 @@ public class ContactoDAO implements GenericoDAO<Contacto> {
 
     @Override
     public List<Contacto> findAll() {
-       Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Contacto> contactos = new ArrayList<>();
@@ -181,6 +183,11 @@ public class ContactoDAO implements GenericoDAO<Contacto> {
             contacto.setDataNascimento(rs.getDate("data_nascimento"));
             contacto.setUrlFoto(rs.getString("url_foto"));
             contacto.setFoto(rs.getBytes("foto"));
+            
+            Municipio municipio = new Municipio();
+            municipio.setNomeMunicipio(rs.getString("nome_municipio"));
+            contacto.setMunicipio(municipio);
+            
         } catch (SQLException e) {
         }
     }

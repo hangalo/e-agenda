@@ -15,6 +15,7 @@ public class Contacto {
     private Date dataNascimento;
     private String urlFoto;
     private byte[] foto;
+    private Municipio municipio;
 
     public Contacto() {
     }
@@ -108,6 +109,14 @@ public class Contacto {
 
     public byte[] getFoto() {
         return foto;
+    }
+
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
     }
 
     @Override
