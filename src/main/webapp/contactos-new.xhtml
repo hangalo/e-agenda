@@ -52,6 +52,11 @@
                 <h3>Novo Contacto - 2021</h3>
                 <h:form enctype="multipart/form-data">
                    
+                    
+                    <h:outputLabel value="Municipio"/>
+                    <h:selectOneMenu value="#{contactoBean.contacto.municipio}" converter="municipioConverter">
+                        <f:selectItems value="#{municipioBean.municipios}" var="m" itemValue="#{m.idMunicipio}" itemLabel="#{m.nomeMunicipio}"/>
+                    </h:selectOneMenu>
                 </h:form>
 
             </div>

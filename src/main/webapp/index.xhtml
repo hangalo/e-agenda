@@ -4,9 +4,24 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>E-Agenda</title>
+        <style>
+             #center {
+                margin: auto;
+                width: 15%;
+                border: 3px solid green;
+                text-align: center;
+                padding: 10px;
+                font-size: 2em;
+            }
+        </style>
     </h:head>
     <h:body>
+        <div id="center">
         <h:link value="Contactos" outcome="contactos-lista"/>
+        <br/>
+        <h:link value="Novo Contacto" outcome="contactos-new"/>
+    </div>
+    
     </h:body>
 </html>
 

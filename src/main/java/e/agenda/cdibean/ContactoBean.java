@@ -45,6 +45,18 @@ public class ContactoBean implements Serializable {
 
     }
 
+    public Contacto getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(Contacto contacto) {
+        this.contacto = contacto;
+    }
+
+    
+    
+    
+    
     public void salvar() {
         contactoDAO.save(contacto);
         contacto = new Contacto();
