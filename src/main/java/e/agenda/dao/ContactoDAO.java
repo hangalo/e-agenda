@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ContactoDAO implements GenericoDAO<Contacto> {
 
-    private static final String INSERIR = "INSERT INTO contacto(nome,sobrenome, casa, bairro, distrito, data_nascimento, url_foto, foto, id_municipio)VALUES(?,?,?,?,?,?,?,?,?)";
+    private static final String INSERIR = "INSERT INTO contacto(nome,sobrenome, casa, rua, bairro, distrito, data_nascimento, url_foto, foto, id_municipio)VALUES(?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE = "UPDATE contacto SET nome = ? , sobrenome =?, casa= ?, bairro = ?, distrito = ?, data_nascimento=?, url_foto = ?, foto = ?, id_municipio =?  WHERE id = ?";
     private static final String DELETE = "DELETE FROM contacto WHERE id=?;";
     private static final String SELECT_ALL = "SELECT * FROM contacto c INNER JOIN municipio m ON m.id_municipio = c.id_municipio";

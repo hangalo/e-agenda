@@ -7,10 +7,10 @@
         <title>E-Agenda - Novo Contacto</title>
         <style>
             #center {
-                margin: auto;
+                margin:40px auto;
                 width: 25%;
                 border: 3px solid green;
-                text-align: center;
+                /*  text-align: center;*/
                 padding: 10px;
             }
 
@@ -51,14 +51,32 @@
             <div id="center">
                 <h3>Novo Contacto - 2021</h3>
                 <h:form enctype="multipart/form-data">
+                    <h:outputLabel value="Foto"/>
+                    <h:inputFile value="#{contactoBean.foto}" id="foto" title="Foto"/>
+                    <h:commandButton value="Upload" actionListener="#{contactoBean.doUpload}"/>
                     <h:panelGrid columns="2">
-                    
-                    <h:outputLabel value="Municipio"/>
-                    <h:selectOneMenu value="#{contactoBean.contacto.municipio.idMunicipio}" >
-                        <f:selectItems value="#{municipioBean.municipios}" var="m" itemValue="#{m.idMunicipio}" itemLabel="#{m.nomeMunicipio}"/>
-                    </h:selectOneMenu>
-                    
+                        <h:outputLabel value="Nome:"/>
+                        <h:inputText value="#{contactoBean.contacto.nome}"/>
+                        <h:outputLabel value="Sobrenome:"/>
+                        <h:inputText value="#{contactoBean.contacto.sobrenome}"/>
+                        <h:outputLabel value="Data Nascimento"/>
+                        <h:inputText value="#{contactoBean.contacto.dataNascimento}">
+                            <f:convertDateTime type="date" pattern="dd/mm/yyyy"/>
+                        </h:inputText>
+                        <h:outputLabel value="Casa N.º:"/>
+                        <h:inputText value="#{contactoBean.contacto.casa}"/>
+                        <h:outputLabel value="Bairro:"/>
+                        <h:inputText value="#{contactoBean.contacto.bairro}"/>
+                        <h:outputLabel value="Distrito"/>
+                        <h:inputText value="#{contactoBean.contacto.distrito}"/>
+
+                        <h:outputLabel value="Municipio"/>
+                        <h:selectOneMenu value="#{contactoBean.contacto.municipio}" converter="municipioConverter" >
+                            <f:selectItems value="#{municipioBean.municipios}" var="m" itemValue="#{m}" itemLabel="#{m.nomeMunicipio}"/>
+                        </h:selectOneMenu>
+
                     </h:panelGrid>
+                    <h:commandButton value="Guardar" actionListener="#{contactoBean.salvar}"/>
                 </h:form>
 
             </div>

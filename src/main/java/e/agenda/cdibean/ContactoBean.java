@@ -53,6 +53,14 @@ public class ContactoBean implements Serializable {
         this.contacto = contacto;
     }
 
+    public Part getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Part foto) {
+        this.foto = foto;
+    }
+
     
     
     
@@ -73,13 +81,13 @@ public class ContactoBean implements Serializable {
         try {
             InputStream in = foto.getInputStream();
             File f = new File(FicheiroUtil.getPathPastaAplicacaoJSF() + foto.getSubmittedFileName());
-
             f.createNewFile();
             FileOutputStream out = new FileOutputStream(f);
             byte[] buffer = new byte[1024 * 1024 * 100];
             int length;
             while ((length = in.read(buffer)) > 0) {
                 out.write(buffer, 0, length);
+                System.out.println("Guardar imagem");
             }
             out.close();
             in.close();
@@ -92,7 +100,7 @@ public class ContactoBean implements Serializable {
 
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("path", f.getAbsolutePath());
             uploaded = true;
-            FacesMessage msg = new FacesMessage("Ficheito", "\t\t" + f.getName() + "\t" + "\t" + "carregado com sucesso");
+            FacesMessage msg = new FacesMessage("Ficheiro", "\t\t" + f.getName() + "\t" + "\t" + "carregado com sucesso");
             FacesContext.getCurrentInstance().addMessage(null, msg);
 
         } catch (IOException ex) {
