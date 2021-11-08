@@ -5,36 +5,81 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>E-Agenda - Lista de contactos</title>
+        <style>
+            #center {
+                margin: auto;
+                width: 15%;
+                border: 3px solid green;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .contactoTabela{
+
+                border-collapse:collapse;
+
+            }
+
+            .contactoTabelaPares{
+
+                text-align:center;
+
+                background:none repeat scroll 0 0 #CCFFFF;
+
+                border-top:1px solid #BBBBBB;
+
+            }
+
+            .contactoTabelaImpares{
+
+                text-align:center;
+
+                background:none repeat scroll 0 0 #99CCFF;
+
+                border-top:1px solid #BBBBBB;
+
+            }
+
+        </style>
+
+
     </h:head>
-    <h:body><f:view>
-            <h:form>
-                <h:dataTable value="#{contactoBean.listaContactos}" var="item" border="1">
 
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputLabel value="Nome"/>                               	 
-                        </f:facet>
-                        <h:outputText value="#{item.nome}"/>
-                    </h:column>
+    <h:body>
 
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputLabel value="Sobrenome"/>                               	 
-                        </f:facet>
-                        <h:outputText value="#{item.sobrenome}"/>
-                    </h:column>
+        <f:view>
+            <div id="center">
+                <h3>Meus contactos - 2021</h3>
+                <h:form >
+                    <h:dataTable value="#{contactoBean.listaContactos}" var="item" border="1" styleClass="contactoTabela" rowClasses="contactoTabelaPares,contactoTabelaImpares">
 
-                    <h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Nome"/>                               	 
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </h:column>
 
-                        <f:facet name="header">
-                            <h:outputText value="Foto"/>
-                        </f:facet>
-                        <h:graphicImage value="/VisualizarFotoServlet?file=#{item.urlFoto}" alt="foto" width="50" height="50"/>
-                    </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Sobrenome"/>                               	 
+                            </f:facet>
+                            <h:outputText value="#{item.sobrenome}"/>
+                        </h:column>
+
+                        <h:column>
+
+                            <f:facet name="header">
+                                <h:outputText value="Foto"/>
+                            </f:facet>
+                            <h:graphicImage value="/VisualizarFotoServlet?file=#{item.urlFoto}" alt="foto" width="80" height="50"/>
+                        </h:column>
 
 
-                </h:dataTable>
-            </h:form>
+                    </h:dataTable>
+                </h:form>
+
+            </div>
         </f:view>
 
 
