@@ -8,7 +8,7 @@
         <style>
             #center {
                 margin: auto;
-                width: 20%;
+                width: 25%;
                 border: 3px solid green;
                 text-align: center;
                 padding: 10px;
@@ -66,21 +66,26 @@
                             </f:facet>
                             <h:outputText value="#{item.sobrenome}"/>
                         </h:column>
-                        
-                         <h:column>
+
+                        <h:column>
                             <f:facet name="header">
                                 <h:outputLabel value="Casa"/>                               	 
                             </f:facet>
                             <h:outputText value="#{item.casa}"/>
                         </h:column>
-                        
-                       
-                        
-                         <h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Rua"/>                               	 
+                            </f:facet>
+                            <h:outputText value="#{item.rua}"/>
+                        </h:column>
+
+                        <h:column>
                             <f:facet name="header">
                                 <h:outputLabel value="Muncipio"/>                               	 
                             </f:facet>
-                             <h:outputText value="#{item.municipio.nomeMunicipio}"/>
+                            <h:outputText value="#{item.municipio.nomeMunicipio}"/>
                         </h:column>
 
 
@@ -95,7 +100,9 @@
 
                     </h:dataTable>
                 </h:form>
-
+                <h:form>
+                    <h:link value="Novo Contacto" outcome="contactos-new"/>
+                </h:form>
             </div>
         </f:view>
 

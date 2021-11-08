@@ -5,9 +5,9 @@
     <h:head>
         <title>E-Agenda</title>
         <style>
-             #center {
-                margin: auto;
-                width: 15%;
+            #center {
+                margin:30px auto;
+                width: 20%;
                 border: 3px solid green;
                 text-align: center;
                 padding: 10px;
@@ -16,12 +16,17 @@
         </style>
     </h:head>
     <h:body>
+        <center>
+        <h:graphicImage library ="images" name="contatos-agenda.jpg"/>
+        </center>
         <div id="center">
-        <h:link value="Contactos" outcome="contactos-lista"/>
-        <br/>
-        <h:link value="Novo Contacto" outcome="contactos-new"/>
-    </div>
-    
+            <h:link value="Novo Contacto" outcome="contactos-new"/>
+            <br/>
+            <h:link value="Contactos" outcome="contactos-lista"/>
+            <br/>
+
+        </div>
+
     </h:body>
 </html>
 

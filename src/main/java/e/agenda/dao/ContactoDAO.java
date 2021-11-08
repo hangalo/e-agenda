@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ContactoDAO implements GenericoDAO<Contacto> {
 
-    private static final String INSERIR = "INSERT INTO contacto(nome,sobrenome, casa, rua, bairro, distrito, data_nascimento, url_foto, foto, id_municipio)VALUES(?,?,?,?,?,?,?,?,?,?)";
+    private static final String INSERIR = "INSERT INTO contacto(nome,sobrenome,casa,rua,bairro,distrito,data_nascimento, telefome_movicel, telefone_unitel,telefone_fixo,e_mail,url_foto,foto,id_municipio,id_grupo) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE = "UPDATE contacto SET nome = ? , sobrenome =?, casa= ?, bairro = ?, distrito = ?, data_nascimento=?, url_foto = ?, foto = ?, id_municipio =?  WHERE id = ?";
     private static final String DELETE = "DELETE FROM contacto WHERE id=?;";
     private static final String SELECT_ALL = "SELECT * FROM contacto c INNER JOIN municipio m ON m.id_municipio = c.id_municipio";
@@ -36,9 +36,15 @@ public class ContactoDAO implements GenericoDAO<Contacto> {
             ps.setString(5, contacto.getBairro());
             ps.setString(6, contacto.getDistrito());
             ps.setDate(7, new java.sql.Date(contacto.getDataNascimento().getTime()));
-            ps.setString(8, contacto.getUrlFoto());
-            ps.setBytes(9, contacto.getFoto());
-            ps.setInt(10, contacto.getMunicipio().getIdMunicipio());
+            ps.setString(8, contacto.getTelefoneMovicel());
+            ps.setString(9, contacto.getTelefoneUnitel());
+            ps.setString(10, contacto.getTelefoneFixo());
+            ps.setString(11, contacto.getEmail());
+            ps.setString(12, contacto.getUrlFoto());
+            ps.setBytes(13, contacto.getFoto());
+            ps.setInt(14, contacto.getMunicipio().getIdMunicipio());
+            ps.setInt(15, contacto.getGrupo().getIdGrupo());
+            
             int retorno = ps.executeUpdate();
             if (retorno > 0) {
                 System.out.println("Dados inseridos com Sucesso: " + ps.getUpdateCount());

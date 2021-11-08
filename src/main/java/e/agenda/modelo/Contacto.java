@@ -13,6 +13,11 @@ public class Contacto {
     private String bairro;
     private String distrito;
     private Date dataNascimento;
+    private Grupo grupo;
+    private String telefoneMovicel;
+    private String telefoneUnitel;
+    private String telefoneFixo;
+    private String email;
     private String urlFoto;
     private byte[] foto;
     private Municipio municipio;
@@ -104,6 +109,49 @@ public class Contacto {
         this.municipio = municipio;
     }
 
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
+    public String getTelefoneMovicel() {
+        return telefoneMovicel;
+    }
+
+    public void setTelefoneMovicel(String telefoneMovicel) {
+        this.telefoneMovicel = telefoneMovicel;
+    }
+
+    public String getTelefoneUnitel() {
+        return telefoneUnitel;
+    }
+
+    public void setTelefoneUnitel(String telefoneUnitel) {
+        this.telefoneUnitel = telefoneUnitel;
+    }
+
+    public String getTelefoneFixo() {
+        return telefoneFixo;
+    }
+
+    public void setTelefoneFixo(String telefoneFixo) {
+        this.telefoneFixo = telefoneFixo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;

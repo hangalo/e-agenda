@@ -49,11 +49,19 @@
 
         <f:view>
             <div id="center">
-                <h3>Novo Contacto - 2021</h3>
+                <h3 style="text-align: center">Novo Contacto - 2021</h3>
                 <h:form enctype="multipart/form-data">
                     <h:outputLabel value="Foto"/>
                     <h:inputFile value="#{contactoBean.foto}" id="foto" title="Foto"/>
                     <h:commandButton value="Upload" actionListener="#{contactoBean.doUpload}"/>
+                    <br/>
+                    <br/>
+                    <h:outputLabel value="Grupo"/>
+                        <h:selectOneMenu value="#{contactoBean.contacto.grupo}" converter="grupoConverter" >
+                            <f:selectItems value="#{grupoBean.grupos}" var="g" itemValue="#{g}" itemLabel="#{g.nomeGrupo}"/>
+                        </h:selectOneMenu>
+                    <br/>
+                        <br/>
                     <h:panelGrid columns="2">
                         <h:outputLabel value="Nome:"/>
                         <h:inputText value="#{contactoBean.contacto.nome}"/>
@@ -76,9 +84,20 @@
                         </h:selectOneMenu>
 
                     </h:panelGrid>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
                     <h:commandButton value="Guardar" actionListener="#{contactoBean.salvar}"/>
                 </h:form>
-
+               
+                <br/>
+                <br/>
+                <center>
+                <h:link value="Lista de contactos"  outcome="contactos-lista"/>
+                <br/>
+                <h:link value="Home"  outcome="index"/>
+                </center>
             </div>
         </f:view>
 
