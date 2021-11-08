@@ -18,22 +18,7 @@ public class Contacto {
     private Municipio municipio;
 
     public Contacto() {
-    }
-
-    public Contacto(Integer id, String nome, String sobrenome, String casa, String rua, String bairro, String distrito, Date dataNascimento, String urlFoto, byte[] foto) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.casa = casa;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.distrito = distrito;
-        this.dataNascimento = dataNascimento;
-        this.urlFoto = urlFoto;
-        this.foto = foto;
-    }
-
-    
+    }    
    
     public Integer getId() {
         return id;

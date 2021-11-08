@@ -12,7 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter(value = "municipioConverter")
+@FacesConverter(value = "municipioConverter", forClass = Municipio.class)
 public class MunicipioConverter implements Converter {
 
     MunicipioDAO municipioDAO = new MunicipioDAO();
@@ -22,17 +22,19 @@ public class MunicipioConverter implements Converter {
         Integer id = Integer.parseInt(value);
         try {
             return municipioDAO.findById(id);
-        } catch (Exception e) {
-            System.err.println("Erro de conversao: MunicipioConverter:" + e.getLocalizedMessage());
+        } catch (Exception ex) {
+            System.err.println("Erro na conversão: " + ex.getMessage());
         }
         return null;
     }
+    
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        if (value != null) {
-            Municipio m = (Municipio) value;
-            return String.valueOf(m.getIdMunicipio());
+      
+      if (value != null) {
+            Municipio municipio = (Municipio) value;
+            return String.valueOf(municipio.getIdMunicipio());
         }
         return null;
     }

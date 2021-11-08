@@ -42,7 +42,7 @@ public class ContactoBean implements Serializable {
         contacto = new Contacto();
         contactos = new ArrayList<>();
         contactoDAO = new ContactoDAO();
-
+        contactos = contactoDAO.findAll();
     }
 
     public Contacto getContacto() {
@@ -65,7 +65,7 @@ public class ContactoBean implements Serializable {
     }
 
     public List<Contacto> getListaContactos() {
-        return contactos = contactoDAO.findAll();
+        return contactos;
     }
 
     public void doUpload() {

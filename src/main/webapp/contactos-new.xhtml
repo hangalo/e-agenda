@@ -8,7 +8,7 @@
         <style>
             #center {
                 margin: auto;
-                width: 15%;
+                width: 25%;
                 border: 3px solid green;
                 text-align: center;
                 padding: 10px;
@@ -51,12 +51,14 @@
             <div id="center">
                 <h3>Novo Contacto - 2021</h3>
                 <h:form enctype="multipart/form-data">
-                   
+                    <h:panelGrid columns="2">
                     
                     <h:outputLabel value="Municipio"/>
-                    <h:selectOneMenu value="#{contactoBean.contacto.municipio}" converter="municipioConverter">
+                    <h:selectOneMenu value="#{contactoBean.contacto.municipio.idMunicipio}" >
                         <f:selectItems value="#{municipioBean.municipios}" var="m" itemValue="#{m.idMunicipio}" itemLabel="#{m.nomeMunicipio}"/>
                     </h:selectOneMenu>
+                    
+                    </h:panelGrid>
                 </h:form>
 
             </div>

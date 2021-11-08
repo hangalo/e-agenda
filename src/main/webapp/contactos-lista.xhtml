@@ -8,7 +8,7 @@
         <style>
             #center {
                 margin: auto;
-                width: 15%;
+                width: 20%;
                 border: 3px solid green;
                 text-align: center;
                 padding: 10px;
@@ -66,6 +66,23 @@
                             </f:facet>
                             <h:outputText value="#{item.sobrenome}"/>
                         </h:column>
+                        
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Casa"/>                               	 
+                            </f:facet>
+                            <h:outputText value="#{item.casa}"/>
+                        </h:column>
+                        
+                       
+                        
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Muncipio"/>                               	 
+                            </f:facet>
+                             <h:outputText value="#{item.municipio.nomeMunicipio}"/>
+                        </h:column>
+
 
                         <h:column>
 

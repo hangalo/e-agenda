@@ -15,7 +15,7 @@ public class ContactoDAO implements GenericoDAO<Contacto> {
     private static final String INSERIR = "INSERT INTO contacto(nome,sobrenome, casa, bairro, distrito, data_nascimento, url_foto, foto, id_municipio)VALUES(?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE = "UPDATE contacto SET nome = ? , sobrenome =?, casa= ?, bairro = ?, distrito = ?, data_nascimento=?, url_foto = ?, foto = ?, id_municipio =?  WHERE id = ?";
     private static final String DELETE = "DELETE FROM contacto WHERE id=?;";
-    private static final String SELECT_ALL = "SELECT c.id,c.nome,c.sobrenome,c.casa,c.bairro,c.distrito,c.data_nascimento,c.url_foto, c.foto, m.nome_municipio FROM contacto c INNER JOIN municipio m ON m.id_municipio = c.id_municipio";
+    private static final String SELECT_ALL = "SELECT * FROM contacto c INNER JOIN municipio m ON m.id_municipio = c.id_municipio";
     private static final String SELECT_BY_ID = "SELECT c.id,c.nome,c.sobrenome,c.casa,c.bairro,c.distrito,c.data_nascimento,c.url_foto, c.foto, m.nome_municipio FROM contacto c INNER JOIN municipio m ON m.id_municipio = c.id_municipio WHERE id = ?";
 
     @Override
@@ -173,15 +173,15 @@ public class ContactoDAO implements GenericoDAO<Contacto> {
     @Override
     public void popularComDados(Contacto contacto, ResultSet rs) {
         try {
-            contacto.setId(rs.getInt("id"));
-            contacto.setNome(rs.getString("nome"));
-            contacto.setSobrenome(rs.getString("sobrenome"));
-            contacto.setCasa(rs.getString("casa"));
+            contacto.setId(rs.getInt("c.id"));
+            contacto.setNome(rs.getString("c.nome"));
+            contacto.setSobrenome(rs.getString("c.sobrenome"));
+            contacto.setCasa(rs.getString("c.casa"));
             contacto.setRua(rs.getString("rua"));
             contacto.setBairro(rs.getString("bairro"));
             contacto.setDistrito(rs.getString("distrito"));
             contacto.setDataNascimento(rs.getDate("data_nascimento"));
-            contacto.setUrlFoto(rs.getString("url_foto"));
+            contacto.setUrlFoto(rs.getString("c.url_foto"));
             contacto.setFoto(rs.getBytes("foto"));
             
             Municipio municipio = new Municipio();
