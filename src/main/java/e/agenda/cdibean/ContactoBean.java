@@ -81,13 +81,13 @@ public class ContactoBean implements Serializable {
         try {
             InputStream in = foto.getInputStream();
             File f = new File(FicheiroUtil.getPathPastaAplicacaoJSF() + foto.getSubmittedFileName());
+
             f.createNewFile();
             FileOutputStream out = new FileOutputStream(f);
             byte[] buffer = new byte[1024 * 1024 * 100];
             int length;
             while ((length = in.read(buffer)) > 0) {
                 out.write(buffer, 0, length);
-                System.out.println("Guardar imagem");
             }
             out.close();
             in.close();

@@ -56,33 +56,57 @@
                     <h:commandButton value="Upload" actionListener="#{contactoBean.doUpload}"/>
                     <br/>
                     <br/>
-                    <h:outputLabel value="Grupo"/>
-                        <h:selectOneMenu value="#{contactoBean.contacto.grupo}" converter="grupoConverter" >
-                            <f:selectItems value="#{grupoBean.grupos}" var="g" itemValue="#{g}" itemLabel="#{g.nomeGrupo}"/>
-                        </h:selectOneMenu>
+
                     <br/>
-                        <br/>
+                    <br/>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="Nome:"/>
-                        <h:inputText value="#{contactoBean.contacto.nome}"/>
-                        <h:outputLabel value="Sobrenome:"/>
-                        <h:inputText value="#{contactoBean.contacto.sobrenome}"/>
-                        <h:outputLabel value="Data Nascimento"/>
-                        <h:inputText value="#{contactoBean.contacto.dataNascimento}">
-                            <f:convertDateTime type="date" pattern="dd/mm/yyyy"/>
-                        </h:inputText>
-                        <h:outputLabel value="Casa N.º:"/>
-                        <h:inputText value="#{contactoBean.contacto.casa}"/>
-                        <h:outputLabel value="Bairro:"/>
-                        <h:inputText value="#{contactoBean.contacto.bairro}"/>
-                        <h:outputLabel value="Distrito"/>
-                        <h:inputText value="#{contactoBean.contacto.distrito}"/>
+                        <h:panelGroup>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nome:"/>
+                                <h:inputText value="#{contactoBean.contacto.nome}"/>
+                                <h:outputLabel value="Sobrenome:"/>
+                                <h:inputText value="#{contactoBean.contacto.sobrenome}"/>
+                                <h:outputLabel value="Data Nascimento"/>
+                                <h:inputText value="#{contactoBean.contacto.dataNascimento}">
+                                    <f:convertDateTime type="date" pattern="dd/mm/yyyy"/>
+                                </h:inputText>
+                            </h:panelGrid>
+                        </h:panelGroup>
 
-                        <h:outputLabel value="Municipio"/>
-                        <h:selectOneMenu value="#{contactoBean.contacto.municipio}" converter="municipioConverter" >
-                            <f:selectItems value="#{municipioBean.municipios}" var="m" itemValue="#{m}" itemLabel="#{m.nomeMunicipio}"/>
-                        </h:selectOneMenu>
+                        <h:panelGroup>
+                            <h:panelGrid columns="1">
+                                <h:outputLabel value="Grupo"/>
+                                <h:selectOneMenu value="#{contactoBean.contacto.grupo}" converter="grupoConverter" >
+                                    <f:selectItems value="#{grupoBean.grupos}" var="g" itemValue="#{g}" itemLabel="#{g.nomeGrupo}"/>
+                                </h:selectOneMenu>
 
+                            </h:panelGrid>
+
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Mov. Movicel"/>
+                                <h:inputText value="#{contactoBean.contacto.telefoneMovicel}"/>
+                                <h:outputLabel value="Mov. Unitel"/>
+                                <h:inputText value="#{contactoBean.contacto.telefoneUnitel}"/>
+                                <h:outputLabel value="Tel. Fixo:"/>
+                                <h:inputText value="#{contactoBean.contacto.telefoneFixo}"/>
+                                <h:outputLabel value="E-mail:"/>
+                                <h:inputText value="#{contactoBean.contacto.email}"/>
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <h:outputLabel value="Casa N.º:"/>
+                            <h:inputText value="#{contactoBean.contacto.casa}"/>
+                            <h:outputLabel value="Bairro:"/>
+                            <h:inputText value="#{contactoBean.contacto.bairro}"/>
+                            <h:outputLabel value="Distrito:"/>
+                            <h:inputText value="#{contactoBean.contacto.distrito}"/>
+                            <h:outputLabel value="Municipio:"/>
+                            <h:selectOneMenu value="#{contactoBean.contacto.municipio}" converter="municipioConverter" >
+                                <f:selectItems value="#{municipioBean.municipios}" var="m" itemValue="#{m}" itemLabel="#{m.nomeMunicipio}"/>
+                            </h:selectOneMenu>
+                        </h:panelGroup>
                     </h:panelGrid>
                     <br/>
                     <br/>
@@ -90,13 +114,13 @@
                     <br/>
                     <h:commandButton value="Guardar" actionListener="#{contactoBean.salvar}"/>
                 </h:form>
-               
+
                 <br/>
                 <br/>
                 <center>
-                <h:link value="Lista de contactos"  outcome="contactos-lista"/>
-                <br/>
-                <h:link value="Home"  outcome="index"/>
+                    <h:link value="Lista de contactos"  outcome="contactos-lista"/>
+                    <br/>
+                    <h:link value="Home"  outcome="index"/>
                 </center>
             </div>
         </f:view>

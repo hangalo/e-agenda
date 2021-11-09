@@ -19,7 +19,10 @@ public class FicheiroUtil {
         String separador = System.getProperty("file.separator");
         String pasta ="fotos"+ separador;
         
+        
         String raizAplicacao = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
+       System.out.println("Raiz da aplicação>>>>>>>>>>>>>"+raizAplicacao + pasta);
+        
         return raizAplicacao + pasta;
     }
 
