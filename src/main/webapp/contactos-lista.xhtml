@@ -8,7 +8,7 @@
         <style>
             #center {
                 margin: auto;
-                width: 30%;
+                width: 60%;
                 border: 3px solid green;
                 text-align: center;
                 padding: 10px;
@@ -66,6 +66,38 @@
                             </f:facet>
                             <h:outputText value="#{item.sobrenome}"/>
                         </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Aniversário"/>                               	 
+                            </f:facet>
+                             <h:outputText value="#{item.dataNascimento}">
+                              <f:convertDateTime type="date" pattern="dd/mm/yyyy"/>
+                             </h:outputText>
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Telef. Movicel"/>                               	 
+                            </f:facet>
+                             <h:outputText value="#{item.telefoneMovicel}"/>
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Telef. Unitel"/>                               	 
+                            </f:facet>
+                             <h:outputText value="#{item.telefoneUnitel}"/>
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Telef. Fixo"/>                               	 
+                            </f:facet>
+                             <h:outputText value="#{item.telefoneFixo}"/>
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="E-mail"/>                               	 
+                            </f:facet>
+                             <h:outputText value="#{item.email}"/>
+                        </h:column>
 
                         <h:column>
                             <f:facet name="header">
@@ -79,6 +111,12 @@
                                 <h:outputLabel value="Rua"/>                               	 
                             </f:facet>
                             <h:outputText value="#{item.rua}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Bairro"/>                               	 
+                            </f:facet>
+                            <h:outputText value="#{item.bairro}"/>
                         </h:column>
 
                         <h:column>
@@ -100,9 +138,15 @@
 
                     </h:dataTable>
                 </h:form>
-                <h:form>
-                    <h:link value="Novo Contacto" outcome="contactos-new"/>
-                </h:form>
+                <center>
+                    <h:form>
+                        <h:panelGrid columns="1" style="text-align: center;">
+                            <h:link value="Novo Contacto" outcome="contactos-new"/>
+                            <h:link value="Home"  outcome="index"/>
+                        </h:panelGrid>
+
+                    </h:form>
+                </center>
             </div>
         </f:view>
 
